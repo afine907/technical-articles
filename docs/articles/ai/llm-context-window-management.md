@@ -1,376 +1,135 @@
-# LLM 上下文窗口管理策略
+# 你的 Agent 为什么总说"我忘了"？
 
-> 深入解析大型语言模型上下文窗口限制下的记忆管理、压缩与优化策略
+你有没有遇到过这种情况：
 
-## 背景
+你花了10分钟跟 Agent 解释项目需求，它点头说"明白了，我来帮你实现"。聊了几轮后，你问它"还记得最开始说的架构方案吗？"，它却回答"抱歉，我不太确定你之前提到过什么具体方案"。
 
-- **为什么要写这篇文章？** LLM 的上下文窗口是有限资源，随着对话长度增加，如何高效管理上下文成为关键问题
-- **解决什么问题？** 帮助开发者理解上下文窗口管理的核心挑战，并学习 jojo-code 项目中的实战实现
-- **目标读者是谁？** AI 应用开发者、需要构建长对话系统的工程师
+我当时就懵了：明明刚才说的，怎么就忘了？
 
-## 正文
+折腾了一下午，终于搞明白了——Agent 的"记忆"有上限，用着用着就溢出了。
 
-### 1. 上下文窗口的挑战
+## 问题定位：上下文窗口限制
 
-#### 1.1 Token 限制
+Agent 的记忆，其实就是对话历史。但 LLM 处理对话有个硬限制：**上下文窗口**。
 
-现代 LLM（如 GPT-4、Claude）有严格的上下文长度限制：
+你可以把它理解为"工作记忆容量"。就像你同时只能记住 7±2 个数字一样，LLM 一次只能处理固定数量的 Token。
 
-| 模型 | 最大 Token |
-|------|-----------|
-| GPT-4-8K | 8,192 |
-| GPT-4-32K | 32,768 |
-| Claude 3 | 200,000 |
+Token 又是什么？简单说就是"语言的音节"。英文里，一个单词大概 1-2 个 Token；中文里，一个字大概 1-2 个 Token。
 
-超出限制会导致：
-- 截断丢失重要信息
-- 模型性能下降
-- 错误响应
+不同模型的"工作记忆"大小：
 
-#### 1.2 成本控制
+| 模型 | 上下文窗口 | 大概能装多少 |
+|------|----------|------------|
+| GPT-4-8K | 8,192 Token | 约 4000 字中文 |
+| GPT-4-32K | 32,768 Token | 约 1.6 万字中文 |
+| Claude 3 | 200,000 Token | 约 10 万字中文 |
 
-上下文 Token 直接影响 API 调用成本：
+看着挺多是吧？但实际用起来，你会发现根本不够用。
 
-```python
-# OpenAI GPT-4 计费示例
-input_cost_per_1k = 0.03  # $0.03/1K tokens
-output_cost_per_1k = 0.06  # $0.06/1K tokens
+举个例子：你跟 Agent 聊了一个小时，讨论了项目架构、代码规范、数据库设计、接口文档...这些内容加起来可能就有 5 万字。这时候你的上下文窗口早就爆了，Agent 只能"选择性遗忘"早期的内容。
 
-# 100K tokens 上下文单次调用成本
-cost = (100 * input_cost_per_1k) + (50 * output_cost_per_1k)
-# ≈ $6.00/次
-```
+更坑的是，超出限制不会报错，而是直接截断。你以为它在听，其实它只听到了后半段。
 
-#### 1.3 核心矛盾
+## 怎么解决？
 
-```
-┌─────────────────────────────────────────────────────────┐
-│                    用户对话历史                           │
-│  (可能无限增长，包含大量重复/冗余信息)                      │
-└─────────────────────────────────────────────────────────┘
-                          ↓
-              ┌─────────────────────────┐
-              │    上下文窗口限制         │
-              │    (固定上限如 100K)      │
-              └─────────────────────────┘
-                          ↓
-              ┌─────────────────────────┐
-              │    信息筛选与压缩         │
-              │    (必须丢弃部分信息)      │
-              └─────────────────────────┘
-```
+知道了问题，解决起来就简单了。核心思路就两个字：**压缩**。
 
----
+你不需要记住所有对话，只需要记住重要的。
 
-### 2. 常见管理策略
+我之前踩过一个坑：一开始用简单的滑动窗口，只保留最近 20 条消息。结果 Agent 把项目背景都忘了，给出的方案完全跑偏。后来改成优先保留系统消息（项目背景、约束条件），问题就解决了。
 
-#### 2.1 滑动窗口（Sliding Window）
+这里有三种常见策略，按复杂度排序：
 
-最简单的策略，保留最近 N 条消息：
+### 策略一：滑动窗口（最简单）
 
-```
-[系统] → [用户1] → [AI1] → [用户2] → [AI2] → [用户3] → [AI3]
-   ↓         ↓         ↓         ↓         ↓         ↓
- 保留      保留      保留      保留      保留      保留
- ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
-[系统] → ... → ... → ... → ... → ... → [用户2] → [AI2] → [用户3] → [AI3]
-```
-
-**优点**：实现简单，O(1) 空间
-**缺点**：可能丢失关键早期上下文（如项目背景、用户偏好）
-
-#### 2.2 摘要压缩（Summarization）
-
-定期将历史对话压缩为摘要：
+只保留最近 N 条消息，早期的直接丢弃。
 
 ```python
-class SummarizingMemory:
-    def __init__(self, max_tokens: int):
-        self.max_tokens = max_tokens
-        self.messages = []
-        self.summary = ""
+def sliding_window(messages, max_count=20):
+    """保留最近 N 条消息"""
+    return messages[-max_count:]
+```
+
+优点：实现简单，零成本。
+缺点：可能丢掉重要信息（比如项目背景、用户偏好）。
+
+适用场景：短对话，比如简单的问答助手。
+
+### 策略二：优先级保留（推荐）
+
+给不同类型的消息打分，优先保留高分消息。
+
+```python
+PRIORITY = {
+    "system": 3.0,      # 系统消息（项目背景）最高
+    "user_preference": 2.5,  # 用户偏好
+    "recent": 1.5,      # 最近消息
+    "old": 0.5,         # 早期消息
+}
+
+def priority_select(messages, target_tokens):
+    """按优先级选择消息"""
+    scored = [(PRIORITY.get(m.type, 1.0), m) for m in messages]
+    scored.sort(reverse=True)  # 高分优先
     
-    def add_message(self, msg):
-        self.messages.append(msg)
-        if self.token_count() > self.max_tokens:
-            self._create_summary()
-    
-    def _create_summary(self):
-        # 调用 LLM 生成摘要
-        summary = llm.invoke(
-            f"总结以下对话要点：\n{self.messages[:-10]}"
-        )
-        self.summary = summary
-        self.messages = self.messages[-10:]  # 保留最近10条
-```
-
-**优点**：保留关键信息，降低信息损失
-**缺点**：摘要生成有延迟和成本
-
-#### 2.3 优先级保留（Priority Preservation）
-
-基于重要性评分决定保留哪些内容：
-
-```python
-class PriorityMemory:
-    # 优先级权重
-    PRIORITY = {
-        "system": 3.0,   # 系统消息最高优先级
-        "user_preference": 2.5,  # 用户偏好
-        "recent": 1.5,    # 最近消息
-        "old": 0.5,      # 早期消息
-    }
-    
-    def select_context(self, target_tokens: int) -> list[Message]:
-        scored = [(self.PRIORITY.get(m.type, 1.0) * len(m.tokens), m) 
-                  for m in self.messages]
-        scored.sort(reverse=True)
-        
-        selected = []
-        total = 0
-        for priority, msg in scored:
-            if total + msg.tokens <= target_tokens:
-                selected.append(msg)
-                total += msg.tokens
-        return selected
-```
-
----
-
-### 3. jojo-code 的实现方案
-
-#### 3.1 架构概览
-
-jojo-code 采用 **混合压缩策略**，结合滑动窗口与摘要占位：
-
-```
-┌────────────────────────────────────────────────────────────────┐
-│                    ConversationMemory                          │
-├────────────────────────────────────────────────────────────────┤
-│  messages: list[BaseMessage]                                  │
-│  max_tokens: int = 100000                                      │
-│  storage_path: Path | None                                     │
-│  auto_save: bool                                               │
-└────────────────────────────────────────────────────────────────┘
-                              ↓
-                    ┌─────────────────┐
-                    │   add_message   │
-                    │   (自动压缩)      │
-                    └─────────────────┘
-                              ↓
-                    ┌─────────────────┐
-                    │  _compress()     │
-                    └─────────────────┘
-```
-
-#### 3.2 核心实现
-
-**ConversationMemory 类** (`jojo-code/src/jojo_code/memory/conversation.py`)：
-
-```python
-class ConversationMemory:
-    def __init__(
-        self,
-        max_tokens: int = 100000,
-        storage_path: Path | None = None,
-        auto_save: bool = False,
-    ) -> None:
-        self.messages: list[BaseMessage] = []
-        self.max_tokens = max_tokens
-        self.storage_path = storage_path
-        self.auto_save = auto_save
-        
-        # 使用 tiktoken 进行精确 token 计数
-        self._encoding = tiktoken.encoding_for_model("gpt-4")
-```
-
-#### 3.3 压缩策略详解
-
-压缩逻辑在 `_compress()` 方法中实现：
-
-```python
-def _compress(self) -> None:
-    """压缩记忆：保留系统消息 + 最近消息"""
-    if len(self.messages) <= 5:
-        return  # 消息太少不压缩
-
-    # 分离系统消息和普通消息
-    system_messages = [m for m in self.messages if isinstance(m, SystemMessage)]
-    other_messages = [m for m in self.messages if not isinstance(m, SystemMessage)]
-
-    # 保留最近的 20 条普通消息
-    keep_count = min(20, len(other_messages))
-    recent_messages = other_messages[-keep_count:]
-
-    # 生成摘要占位符
-    discarded_count = len(other_messages) - keep_count
-    if discarded_count > 0:
-        summary = HumanMessage(
-            content=f"[系统] 已压缩 {discarded_count} 条早期对话"
-        )
-        self.messages = system_messages + [summary] + recent_messages
-    else:
-        self.messages = system_messages + recent_messages
-```
-
-#### 3.4 压缩流程图
-
-```
-┌──────────────────────────────────────────────────────────────┐
-│                        输入: messages[]                        │
-└──────────────────────────────────────────────────────────────┘
-                               ↓
-                    ┌───────────────────────┐
-                    │ 消息数 <= 5?          │
-                    └───────────────────────┘
-                         ↓ Yes              ↓ No
-                    ┌─────────┐       ┌──────────────────┐
-                    │ 不压缩  │       │ 分离系统消息      │
-                    └─────────┘       └──────────────────┘
-                                           ↓
-                              ┌────────────────────────┐
-                              │ 保留系统消息            │
-                              │ 最多保留最近20条对话     │
-                              └────────────────────────┘
-                                           ↓
-                    ┌─────────────────────────────────────────┐
-                    │ 有被丢弃的消息?                         │
-                    │ (discarded > 0)                        │
-                    └─────────────────────────────────────────┘
-                         ↓ Yes                    ↓ No
-              ┌───────────────────┐      ┌─────────────────┐
-              │ 插入摘要占位符     │      │ 直接拼接输出    │
-              │ [系统] 已压缩 N 条  │      │                 │
-              └───────────────────┘      └─────────────────┘
-```
-
-#### 3.5 Token 计数
-
-使用 tiktoken 精确计算：
-
-```python
-def token_count(self) -> int:
-    """计算当前 token 数量"""
+    selected = []
     total = 0
-    for msg in self.messages:
-        content = msg.content
-        if isinstance(content, str):
-            total += len(self._encoding.encode(content))
-        else:
-            total += len(self._encoding.encode(str(content)))
-    return total
+    for priority, msg in scored:
+        if total + msg.tokens <= target_tokens:
+            selected.append(msg)
+            total += msg.tokens
+    return selected
 ```
 
-#### 3.6 持久化存储
+优点：保留关键信息。
+缺点：需要维护优先级规则。
 
-支持自动保存到文件系统：
+这是 jojo-code 项目采用的方案。它会：
+1. 永远保留系统消息（项目背景、约束条件）
+2. 压缩早期对话，只保留摘要
+3. 保留最近的 20 条消息
+
+### 策略三：摘要压缩（最智能）
+
+定期调用 LLM 把历史对话压缩成摘要。
 
 ```python
-def save(self) -> None:
-    """保存记忆到文件"""
-    if not self.storage_path:
-        return
-    
-    self.storage_path.parent.mkdir(parents=True, exist_ok=True)
-    
-    data = {
-        "messages": [
-            {
-                "type": msg.__class__.__name__,
-                "content": msg.content,
-            }
-            for msg in self.messages
-        ]
-    }
-    
-    with open(self.storage_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+def summarize_history(messages):
+    """调用 LLM 生成摘要"""
+    summary = llm.invoke(
+        f"总结以下对话的关键信息：\n{messages}"
+    )
+    return summary
 ```
+
+优点：信息保留最完整。
+缺点：有延迟和成本（每次摘要都要调用 LLM）。
+
+适用场景：超长对话、多轮会话。
+
+## 坑点提醒
+
+踩过几个坑，分享一下：
+
+**坑一：系统消息被压缩掉了**
+我一开始没区分消息类型，所有消息同等对待。结果压缩时把系统消息（项目背景）也删了，Agent 完全忘了它在做什么项目。
+解决：系统消息永远保留。
+
+**坑二：压缩了还在用旧数据**
+压缩后，我忘了更新 token 计数，导致后续判断错误。
+解决：每次压缩后重新计算。
+
+**坑三：摘要生成成本高**
+有段时间频繁生成摘要，账单蹭蹭涨。后来发现大部分场景用优先级保留就够了，摘要压缩只在超长对话时用。
+
+## 下一步行动
+
+1. **检查你的 Agent**：看看它现在用的是哪种策略，有没有丢关键信息
+2. **加上 token 计数**：用 tiktoken 库实时监控上下文大小
+3. **实现优先级保留**：至少区分系统消息和普通消息
+
+如果你在用 Python，可以直接看 jojo-code 的实现，在 `src/jojo_code/memory/conversation.py` 里。核心代码不到 100 行，很清晰。
 
 ---
 
-### 4. 代码示例和性能对比
-
-#### 4.1 完整使用示例
-
-```python
-from pathlib import Path
-from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
-from jojo_code.memory.conversation import ConversationMemory
-
-# 初始化（默认 100K token 上限）
-memory = ConversationMemory(
-    max_tokens=100000,
-    storage_path=Path("./data/memory.json"),
-    auto_save=True,
-)
-
-# 添加系统消息（最高优先级，压缩时保留）
-memory.add_message(SystemMessage(content="你是一个 Python 专家助手"))
-
-# 添加对话
-memory.add_message(HumanMessage(content="解释 Python 的装饰器"))
-memory.add_message(AIMessage(content="""装饰器是一个接收函数并扩展其行为的可调用对象...""")
-
-# 获取上下文用于 LLM 调用
-context = memory.get_context()
-
-# 获取最近 N 条消息（轻量级场景）
-recent = memory.get_last_n_messages(n=5)
-
-# 检查 token 使用
-print(f"当前 token 数: {memory.token_count()}")
-```
-
-#### 4.2 性能对比
-
-| 策略 | 100K Token 开销 | 信息保留率 | 实现复杂度 |
-|------|----------------|-----------|-----------|
-| 滑动窗口 | $0 | 70% | 低 |
-| 摘要压缩 | $0.05-0.20 | 85% | 中 |
-| jojo-code 混合 | $0 | 80% | 低-中 |
-
-#### 4.3 不同场景推荐
-
-```
-短对话 (< 50 条消息)
-└── 滑动窗口足够，无需压缩
-
-中等对话 (50-500 条消息)
-└── jojo-code 混合策略
-    - 保留系统消息
-    - 压缩早期对话
-
-长对话/多轮会话 (500+ 条消息)
-└── 摘要压缩
-    - 定期生成结构化摘要
-    - 关键信息提取
-
-多智能体协作
-└── 优先级保留 + 分层上下文
-    - 系统指令最高
-    - 任务目标次高
-    - 历史对话按需
-```
-
----
-
-## 总结
-
-- **上下文窗口管理**是 LLM 应用的核心挑战
-- **jojo-code** 采用混合压缩策略：保留系统消息 + 滑动窗口 + 摘要占位符
-- **实现要点**：使用 tiktoken 精确计数、自动触发压缩、支持持久化
-- **选型建议**：根据对话长度和重要性需求选择合适的策略
-
-## 参考资料
-
-- [OpenAI Context Window Documentation](https://platform.openai.com/docs/guides/text-generation)
-- [LangChain Message Documentation](https://python.langchain.com/docs/modules/memory/)
-- [Tiktoken Tokenizer](https://github.com/openai/tiktoken)
-- [jojo-code 项目源码](https://github.com/anomalyco/opencode)
-
----
-
-**作者**: AI Assistant
-**日期**: 2026-04-24
-**标签**: LLM, Context Management, AI Engineering, Python
+核心就一点：Agent 的记忆是有限的，你得帮它"记笔记"。不是什么都记，而是记重要的。
