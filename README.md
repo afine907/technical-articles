@@ -35,6 +35,8 @@ afine907.github.io/
 - [Agent 性能监控与调优](https://afine907.github.io/#/articles/ai/Agent-性能监控与调优)
 - [Agent 安全威胁与防御策略](https://afine907.github.io/#/articles/ai/Agent-安全威胁与防御策略)
 - [Agent 多模型降级策略](https://afine907.github.io/#/articles/ai/Agent-多模型降级策略)
+- [主流 Agent 框架对比评测](https://afine907.github.io/#/articles/ai/主流-Agent-框架对比评测)
+- [TypeScript + Python 双语言架构实践](https://afine907.github.io/#/articles/ai/typescript-python-architecture-practice)
 
 ## 🚀 本地预览
 
