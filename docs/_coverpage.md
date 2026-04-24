@@ -3,7 +3,7 @@
 > 收集和撰写技术文章，记录学习与思考。
 
 [:memo: 开始阅读](#AI--LLM){ .md-button }
-[:book: 在线阅读](https://afine907.github.io/technical-articles/){ .md-button }
+[:cat2: GitHub](https://github.com/afine907){ .md-button }
 
 ---
 

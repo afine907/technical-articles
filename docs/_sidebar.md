@@ -10,4 +10,4 @@
 
 ---
 
-- [文章模板](#/templates/article-template)
+- [GitHub](https://github.com/afine907)
