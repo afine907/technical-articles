@@ -1,31 +1,16 @@
-# 技术文章
+<!-- 封面页 -->
 
-> 收集和撰写技术文章，记录学习与思考。
+<div class="avatar">🤖</div>
 
-[:memo: 开始阅读](#AI--LLM){ .md-button }
-[:cat2: GitHub](https://github.com/afine907){ .md-button }
+# <span>jojo</span> 的技术空间
 
----
+> AI Agent 开发者 · 技术探索者
+> 
+> 专注于 AI Agent 架构设计、LangGraph 工程实践
 
-## 目录
+<div class="buttons">
+  <a href="#/README"><button class="md-button">开始阅读</button></a>
+  <a href="#/articles/ai/AI-Agent-长期记忆管理实现"><button class="md-button">精选文章</button></a>
+</div>
 
-### AI / LLM
-- AI Agent 长期记忆管理实现 - 探讨 AI Agent 如何管理对话历史和上下文记忆
-- Agent 工具权限管理设计 - 介绍 Agent 工具权限管理架构的设计与实现
-- jojo-code 核心架构解析 - 解析 jojo-code 的整体架构设计和核心原理
-
-### 后端开发
-- 待添加
-
-### 前端开发
-- 待添加
-
-### DevOps
-- 待添加
-
-### 工具
-- 待添加
-
----
-
-> 本项目使用 [Docsify](https://docsify.js.org/) 构建，无需构建，直接渲染 Markdown 文件。
+<!-- 统计数字由 JS 动态插入 -->
