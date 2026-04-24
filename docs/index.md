@@ -46,6 +46,15 @@
 - [主流 Agent 框架对比，选型不再纠结](articles/ai/主流-Agent-框架对比评测) - LangChain/LangGraph/AutoGen/CrewAI
 - [TypeScript + Python，跨语言架构实践](articles/ai/typescript-python-architecture-practice) - JSON-RPC over stdio
 
+### Level 2.5：工具开发
+
+- [Agent 工具怎么写？从 0 到 1 开发你的第一个工具](articles/ai/Agent-工具开发指南) - @tool 装饰器 + 参数定义
+- [Agent 怎么测试？从单元测试到集成测试](articles/ai/Agent-测试指南) - Mock LLM + 分层测试
+
+### Level 4.5：部署与运维
+
+- [Agent 部署上线全流程](articles/ai/Agent-部署上线指南) - Docker + FastAPI + 监控日志
+
 ### 补充文章
 
 - [jojo-code 架构解析](articles/ai/jojo-code-核心架构解析) - Agent CLI 架构设计
@@ -55,7 +64,7 @@
 
 ## 📊 统计
 
-- 📝 文章：**13 篇**
+- 📝 文章：**16 篇**
 - 🤖 领域：**AI/LLM**
 - 🔄 状态：**持续更新**
 
