@@ -51,9 +51,18 @@
 - [Agent 工具怎么写？从 0 到 1 开发你的第一个工具](articles/ai/Agent-工具开发指南) - @tool 装饰器 + 参数定义
 - [Agent 怎么测试？从单元测试到集成测试](articles/ai/Agent-测试指南) - Mock LLM + 分层测试
 
+### Level 3.5：Prompt 与协作
+
+- [Prompt 写得烂，Agent 就会瞎跑](articles/ai/Agent-Prompt设计指南) - System Prompt 结构 + Few-shot 示例
+- [单 Agent 不够用？多 Agent 协作入门](articles/ai/Agent-多Agent协作指南) - 顺序传递 + 反馈循环
+
 ### Level 4.5：部署与运维
 
 - [Agent 部署上线全流程](articles/ai/Agent-部署上线指南) - Docker + FastAPI + 监控日志
+
+### Level 5.5：实战项目
+
+- [实战：用 Agent 写一个完整项目](articles/ai/Agent-实战项目开发) - Todo CLI 从需求到上线
 
 ### 补充文章
 
@@ -64,7 +73,7 @@
 
 ## 📊 统计
 
-- 📝 文章：**16 篇**
+- 📝 文章：**19 篇**
 - 🤖 领域：**AI/LLM**
 - 🔄 状态：**持续更新**
 
