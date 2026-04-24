@@ -64,6 +64,12 @@
 
 - [实战：用 Agent 写一个完整项目](articles/ai/Agent-实战项目开发) - Todo CLI 从需求到上线
 
+### Level 6：前沿探索
+
+- [Agent 记忆演进：从对话历史到向量数据库](articles/ai/Agent-记忆系统设计) - 三层记忆架构 + 长期记忆
+- [Agent 自我进化：让 Agent 学会反思和改进](articles/ai/Agent-自我进化机制) - 错误案例库 + 自动学习
+- [Agent + MCP：模型上下文协议实战](articles/ai/Agent-MCP实战指南) - 即插即用的工具协议
+
 ### 补充文章
 
 - [jojo-code 架构解析](articles/ai/jojo-code-核心架构解析) - Agent CLI 架构设计
@@ -73,7 +79,7 @@
 
 ## 📊 统计
 
-- 📝 文章：**19 篇**
+- 📝 文章：**22 篇**
 - 🤖 领域：**AI/LLM**
 - 🔄 状态：**持续更新**
 
