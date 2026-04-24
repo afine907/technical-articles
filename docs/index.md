@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # 🤖 jojo 的技术空间
 
 > AI Agent 开发者 · 技术探索者
