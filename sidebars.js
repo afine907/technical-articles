@@ -27,6 +27,8 @@ const sidebars = {
         'agent-architecture/AI-Agent-长期记忆管理实现',
         'agent-architecture/Agent-Tool-Permission-Design',
         'agent-architecture/jojo-code-核心架构解析',
+        'agent-architecture/Agent-多Agent协作指南',
+        'agent-architecture/Agent-记忆系统设计',
       ],
     },
     {
@@ -40,6 +42,10 @@ const sidebars = {
         'agent-engineering/LangGraph-Agent-编排实战',
         'agent-engineering/Agent-状态管理设计',
         'agent-engineering/llm-context-window-management',
+        'agent-engineering/Agent-MCP实战指南',
+        'agent-engineering/Agent-Prompt设计指南',
+        'agent-engineering/Agent-工具开发指南',
+        'agent-engineering/Agent-测试指南',
       ],
     },
     {
@@ -53,6 +59,7 @@ const sidebars = {
         'agent-advanced/Agent-流式响应实现',
         'agent-advanced/Agent-错误处理与重试机制',
         'agent-advanced/Agent-性能监控与调优',
+        'agent-advanced/Agent-自我进化机制',
       ],
     },
     {
@@ -66,6 +73,39 @@ const sidebars = {
         'agent-architecture-level/Agent-安全威胁与防御策略',
         'agent-architecture-level/Agent-多模型降级策略',
         'agent-architecture-level/typescript-python-architecture-practice',
+      ],
+    },
+    {
+      type: 'category',
+      label: '🎯 实战项目',
+      link: {
+        type: 'generated-index',
+        description: 'Agent 实战项目开发',
+      },
+      items: [
+        'agent-projects/Agent-实战项目开发',
+      ],
+    },
+    {
+      type: 'category',
+      label: '🚢 运维部署',
+      link: {
+        type: 'generated-index',
+        description: 'Agent 部署与运维',
+      },
+      items: [
+        'agent-ops/Agent-部署上线指南',
+      ],
+    },
+    {
+      type: 'category',
+      label: '📊 框架对比',
+      link: {
+        type: 'generated-index',
+        description: '主流 Agent 框架对比评测',
+      },
+      items: [
+        'agent-framework/主流-Agent-框架对比评测',
       ],
     },
   ],
