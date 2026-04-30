@@ -12,9 +12,9 @@ const config = {
   },
 
   url: 'https://afine907.github.io',
-  baseUrl: '/',
+  baseUrl: '/afine907-blog/',
   organizationName: 'afine907',
-  projectName: 'afine907.github.io',
+  projectName: 'afine907-blog',
 
   onBrokenLinks: 'warn',
 
