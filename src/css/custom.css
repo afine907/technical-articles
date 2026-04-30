@@ -1,11 +1,28 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+/* ============================================================
+   jojo 的技术空间 - Typography & Visual Polish
+   ============================================================ */
 
-/* You can override the default Infima variables here. */
+/* --- Google Fonts (Noto Sans SC + Inter) --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ============================================================
+   1. CSS Variables - Font System & Colors
+   ============================================================ */
 :root {
+  /* --- Font Stack --- */
+  --font-sans: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace;
+
+  /* --- Typography Scale --- */
+  --line-height-body: 1.8;
+  --line-height-heading: 1.3;
+  --line-height-code: 1.7;
+  --letter-spacing-body: 0.02em;
+  --letter-spacing-heading: -0.01em;
+  --paragraph-spacing: 1.25rem;
+
+  /* --- Colors (Green Theme) --- */
   --ifm-color-primary: #2e8555;
   --ifm-color-primary-dark: #29784c;
   --ifm-color-primary-darker: #277148;
@@ -13,11 +30,31 @@
   --ifm-color-primary-light: #33925d;
   --ifm-color-primary-lighter: #359962;
   --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* --- Infima Overrides --- */
+  --ifm-font-family-base: var(--font-sans);
+  --ifm-font-family-monospace: var(--font-mono);
+  --ifm-line-height-base: var(--line-height-body);
+  --ifm-code-font-size: 90%;
+  --ifm-heading-font-weight: 700;
+  --ifm-navbar-height: 60px;
+  --ifm-container-width-xl: 1140px;
+
+  /* --- Spacing --- */
+  --content-padding: 2.5rem;
+
+  /* --- Code --- */
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.06);
+  --code-block-bg: #f6f8fa;
+  --code-block-border: #e1e4e8;
+
+  /* --- Shadows --- */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Dark Mode */
 [data-theme='dark'] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
@@ -26,5 +63,371 @@
   --ifm-color-primary-light: #29d5b0;
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.08);
+  --code-block-bg: #1a1b26;
+  --code-block-border: #2a2d3a;
+
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================================
+   2. Base Typography
+   ============================================================ */
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  letter-spacing: var(--letter-spacing-body);
+}
+
+/* ============================================================
+   3. Headings - Refined
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: var(--letter-spacing-heading);
+  line-height: var(--line-height-heading);
+  color: var(--ifm-font-color-base);
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.65rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+[data-theme='dark'] h2 {
+  border-bottom-color: var(--ifm-color-emphasis-800);
+}
+
+h3 {
+  font-size: 1.35rem;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+h4 {
+  font-size: 1.15rem;
+  margin-top: 1.5rem;
+}
+
+/* ============================================================
+   4. Paragraphs & Body Text
+   ============================================================ */
+p {
+  margin-bottom: var(--paragraph-spacing);
+  line-height: var(--line-height-body);
+}
+
+/* Article content: wider line spacing for Chinese readability */
+.markdown p {
+  line-height: 1.9;
+}
+
+/* ============================================================
+   5. Links
+   ============================================================ */
+a {
+  transition: color 0.15s ease;
+}
+
+.markdown a {
+  color: var(--ifm-color-primary);
+  text-decoration: underline;
+  text-decoration-color: rgba(46, 133, 85, 0.3);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.markdown a:hover {
+  text-decoration-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .markdown a {
+  text-decoration-color: rgba(37, 194, 160, 0.3);
+}
+
+[data-theme='dark'] .markdown a:hover {
+  text-decoration-color: var(--ifm-color-primary);
+}
+
+/* ============================================================
+   6. Lists
+   ============================================================ */
+.markdown ul,
+.markdown ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.markdown li {
+  margin-bottom: 0.4rem;
+  line-height: 1.8;
+}
+
+.markdown li > p {
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================================
+   7. Blockquotes
+   ============================================================ */
+.markdown blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid var(--ifm-color-primary);
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 0 8px 8px 0;
+  font-style: normal;
+}
+
+.markdown blockquote p {
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-emphasis-800);
+}
+
+.markdown blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+[data-theme='dark'] .markdown blockquote {
+  background: rgba(37, 194, 160, 0.06);
+  border-left-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .markdown blockquote p {
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* ============================================================
+   8. Code Blocks
+   ============================================================ */
+.markdown code:not(pre code) {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  padding: 0.15em 0.4em;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 4px;
+  color: var(--ifm-color-primary-dark);
+  font-weight: 500;
+}
+
+[data-theme='dark'] .markdown code:not(pre code) {
+  background: rgba(37, 194, 160, 0.1);
+  color: var(--ifm-color-primary-light);
+}
+
+pre {
+  border-radius: 8px !important;
+  border: 1px solid var(--code-block-border) !important;
+  background: var(--code-block-bg) !important;
+}
+
+pre code {
+  font-family: var(--font-mono) !important;
+  font-size: 0.875rem !important;
+  line-height: var(--line-height-code) !important;
+}
+
+/* Code block header (language label) */
+.prism-code-header {
+  font-family: var(--font-mono);
+}
+
+/* ============================================================
+   9. Tables
+   ============================================================ */
+.markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.markdown th {
+  background: var(--ifm-color-emphasis-100);
+  font-weight: 600;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--ifm-color-emphasis-300);
+}
+
+.markdown td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-100);
+}
+
+.markdown tr:last-child td {
+  border-bottom: none;
+}
+
+.markdown tr:hover {
+  background: var(--ifm-color-emphasis-50);
+}
+
+[data-theme='dark'] .markdown table {
+  border-color: var(--ifm-color-emphasis-800);
+}
+
+[data-theme='dark'] .markdown th {
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom-color: var(--ifm-color-emphasis-800);
+}
+
+[data-theme='dark'] .markdown td {
+  border-bottom-color: var(--ifm-color-emphasis-800);
+}
+
+[data-theme='dark'] .markdown tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* ============================================================
+   10. Horizontal Rule
+   ============================================================ */
+.markdown hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--ifm-color-emphasis-300),
+    transparent
+  );
+  margin: 2rem 0;
+}
+
+/* ============================================================
+   11. Images
+   ============================================================ */
+.markdown img {
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+}
+
+/* ============================================================
+   12. Navbar Polish
+   ============================================================ */
+.navbar {
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(12px);
+}
+
+.navbar__title {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* ============================================================
+   13. Sidebar Polish
+   ============================================================ */
+.menu__link {
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  font-size: 0.9rem;
+}
+
+.menu__link--active:not(.menu__link--sublist) {
+  background: var(--ifm-color-primary-lightest);
+  color: var(--ifm-color-primary-dark);
+  font-weight: 500;
+}
+
+[data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
+  background: rgba(37, 194, 160, 0.12);
+  color: var(--ifm-color-primary-light);
+}
+
+/* ============================================================
+   14. Article Doc Content
+   ============================================================ */
+.markdown h1:first-child {
+  font-size: 2rem;
+}
+
+/* Article title underline accent */
+.markdown h1::after {
+  content: '';
+  display: block;
+  width: 3rem;
+  height: 3px;
+  background: var(--ifm-color-primary);
+  border-radius: 2px;
+  margin-top: 0.75rem;
+}
+
+/* ============================================================
+   15. Footer Polish
+   ============================================================ */
+.footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer__title {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   16. Scrollbar (Webkit)
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ifm-color-emphasis-500);
+}
+
+/* ============================================================
+   17. Selection Highlight
+   ============================================================ */
+::selection {
+  background: rgba(46, 133, 85, 0.2);
+  color: inherit;
+}
+
+[data-theme='dark'] ::selection {
+  background: rgba(37, 194, 160, 0.25);
+}
+
+/* ============================================================
+   18. Smooth Animations
+   ============================================================ */
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
 }
