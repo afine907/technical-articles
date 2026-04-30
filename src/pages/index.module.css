@@ -1,23 +1,161 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
 .heroBanner {
-  padding: 4rem 0;
+  padding: 5rem 0 4rem;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, #2e8555 0%, #1a5c38 100%);
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+[data-theme='dark'] .heroBanner {
+  background: linear-gradient(135deg, #1a5c38 0%, #0d3d22 100%);
+}
+
+.heroContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.heroText {
+  flex: 1;
+}
+
+.heroDescription {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin: 1rem 0 1.5rem;
+  line-height: 1.6;
 }
 
 .buttons {
   display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.heroStats {
+  display: flex;
+  gap: 2rem;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.statNumber {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Featured Section */
+.featuredSection {
+  padding: 4rem 0;
+  background: var(--ifm-background-surface-color);
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  text-align: center;
+  margin: 0 0 2rem 0;
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featuredCard {
+  background: var(--ifm-background-color);
+  border: 2px solid var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  padding: 2rem;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+.featuredCard:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+[data-theme='dark'] .featuredCard:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.featuredTitle {
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem 0;
+}
+
+.featuredDescription {
+  color: var(--ifm-color-emphasis-600);
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+}
+
+.readMore {
+  color: var(--ifm-color-primary);
+  font-weight: 500;
+}
+
+.featuredCard:hover .readMore {
+  text-decoration: underline;
+}
+
+/* All Articles Section */
+.allArticlesSection {
+  padding: 4rem 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .heroBanner {
+    padding: 3rem 0 2rem;
+  }
+
+  .heroContent {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .heroStats {
+    justify-content: center;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .statItem {
+    padding: 0.75rem 1rem;
+  }
+
+  .statNumber {
+    font-size: 1.5rem;
+  }
+
+  .featuredGrid {
+    grid-template-columns: 1fr;
+  }
 }

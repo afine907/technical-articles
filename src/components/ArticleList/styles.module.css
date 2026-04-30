@@ -1,0 +1,35 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.categorySection {
+  margin-bottom: 4rem;
+}
+
+.categoryTitle {
+  font-size: 1.75rem;
+  margin: 0 0 0.5rem 0;
+}
+
+.categoryDescription {
+  color: var(--ifm-color-emphasis-600);
+  margin: 0 0 1.5rem 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .categoryTitle {
+    font-size: 1.5rem;
+  }
+}
