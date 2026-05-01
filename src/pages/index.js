@@ -79,7 +79,7 @@ function FeaturedArticles() {
           {featured.map((article, idx) => (
             <Link
               key={idx}
-              to={`/docs/${article.docId}`}
+              to={`/${article.docId}`}
               className={styles.featuredCard}>
               <h3 className={styles.featuredTitle}>{article.title}</h3>
               <p className={styles.featuredDescription}>{article.description}</p>

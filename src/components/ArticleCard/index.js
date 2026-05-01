@@ -4,7 +4,7 @@ import styles from './styles.module.css';
 
 export default function ArticleCard({ title, description, category, docId }) {
   return (
-    <Link to={`/docs/${docId}`} className={styles.cardLink}>
+    <Link to={`/${docId}`} className={styles.cardLink}>
       <div className={styles.card}>
         {category && <span className={styles.category}>{category}</span>}
         <h3 className={styles.title}>{title}</h3>
