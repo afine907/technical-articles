@@ -14,7 +14,7 @@ const config = {
   url: 'https://afine907.github.io',
   baseUrl: '/',
   organizationName: 'afine907',
-  projectName: 'afine907.github.io',
+  projectName: 'afine907-wiki',
 
   onBrokenLinks: 'warn',
 
