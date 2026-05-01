@@ -571,7 +571,7 @@ async def call_tool(name: str, arguments: dict):
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-github"],
       "env": {
-        "GITHUB_TOKEN": "ghp_xxx"
+        "GITHUB_TOKEN": "your-github-token"
       }
     },
     "filesystem": {
