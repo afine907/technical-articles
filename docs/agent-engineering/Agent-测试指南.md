@@ -3,7 +3,6 @@ slug: testing
 sidebar_position: 13
 title: Agent 怎么测试？从单元测试到端到端测试
 ---
-slug: testing
 
 
 你的 Agent 写完了，跑了几个例子觉得没问题。上线后，用户输入了一个特殊字符，Agent 崩溃了。
@@ -599,6 +598,5 @@ def test_2():
 4. **配置覆盖率**：确保关键代码被测试覆盖
 
 ---
-slug: testing
 
 Agent 测试的核心是：**不测输出内容，测行为和流程**。工具测函数，决策测逻辑，流程测完整性。

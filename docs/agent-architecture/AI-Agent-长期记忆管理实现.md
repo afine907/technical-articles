@@ -3,25 +3,14 @@ slug: long-term-memory
 sidebar_position: 1
 title: 如何让 Agent 记住重要信息？
 ---
-slug: long-term-memory
 
 # 如何让 Agent 记住重要信息？
 
 上一篇我们说到，Agent 的"工作记忆"有上限，用着用着就忘了。
 
-但你可能会问：那我能不能让 Agent 记住重要信息，忘掉不重要的？
+用户在开始时说"我们要用 TypeScript + React"，聊了 50 轮后 Agent 给出的代码却是 Python + Django——关键信息在上下文压缩时被丢掉了。怎么让 Agent 记住重要信息，忘掉不重要的？
 
-可以。这篇文章，我来分享三种记忆管理策略。
-
-## 场景重现
-
-我之前做过一个项目助手 Agent，帮用户写代码。有个问题让我很头疼：
-
-用户在开始时说"我们要用 TypeScript + React，后端用 FastAPI"。聊了50轮后，Agent 给出的代码示例是 Python + Django。
-
-用户问"为什么不用 TypeScript？"，Agent 说"抱歉，我不记得你之前提过这个要求"。
-
-我当时就想：要是能让 Agent 记住"技术栈选择"这种关键信息就好了。
+三种记忆管理策略：固定窗口、摘要压缩、优先级保留。
 
 ## 核心问题
 
@@ -37,73 +26,19 @@ slug: long-term-memory
 
 ## 三种策略对比
 
-我试过三种方案，各有优劣。
+> 完整的实现代码和架构图见 [Agent 记忆系统设计](./Agent-记忆系统设计.md)。这里聚焦每种策略的核心思路和实际效果。
 
-### 方案一：固定窗口（简单粗暴）
+| 策略 | 核心思路 | 优点 | 缺点 | 适用场景 |
+|------|---------|------|------|---------|
+| **固定窗口** | 只保留最近 N 条消息 | 实现简单、无额外成本 | 早期关键信息丢失 | 短对话、简单问答 |
+| **摘要压缩** | 定期调用 LLM 生成摘要 | 信息保留完整 | 有 API 成本和延迟 | 超长对话、需要完整上下文 |
+| **优先级保留** | 按消息类型打分排序 | 系统消息永不丢失 | 规则需要手动设计 | 大多数 Agent 场景（推荐） |
 
-只保留最近 N 条消息，早期的全部丢弃。
+**固定窗口**的问题：用户在最开始说"我是产品经理，不懂技术"，聊了 30 轮后这条信息被丢掉，Agent 开始用专业术语。
 
-```python
-def keep_recent(messages, n=20):
-    return messages[-n:]
-```
+**摘要压缩**的坑：频繁压缩，一个月花了 200 多美元 API 费用。改成只在 token 超过 80% 阈值时才压缩，成本降了 80%。
 
-这个方案的问题是：可能会丢掉关键信息。
-
-比如用户在最开始说"我是产品经理，不懂技术，请用简单的语言解释"。聊了30轮后，这个关键信息被丢掉了，Agent 开始用专业术语，用户完全听不懂。
-
-**适用场景**：短对话、简单问答。
-
-### 方案二：摘要压缩（智能但贵）
-
-定期调用 LLM 把历史对话压缩成摘要。
-
-```python
-def compress(messages):
-    # 调用 LLM 生成摘要
-    summary = llm.invoke(
-        f"总结以下对话的关键信息：\n{messages}"
-    )
-    return [SystemMessage(content=summary)]
-```
-
-优点：信息保留最完整。
-缺点：有成本和延迟。
-
-我之前踩过一个坑：频繁压缩，一个月花了 200 多美元的 API 费用。后来改成只在 token 超过阈值时才压缩，成本降了 80%。
-
-**适用场景**：超长对话、需要完整上下文。
-
-### 方案三：优先级保留（推荐）
-
-这是我目前用的方案。给不同类型的消息打分，优先保留高分消息。
-
-```python
-# 消息优先级
-PRIORITY = {
-    "system": 3.0,      # 系统消息（项目背景）
-    "preference": 2.5,  # 用户偏好
-    "recent": 1.5,      # 最近消息
-    "old": 0.5,         # 早期消息
-}
-
-def select_by_priority(messages, max_tokens):
-    """按优先级选择消息"""
-    scored = [(PRIORITY.get(m.type, 1.0), m) for m in messages]
-    scored.sort(reverse=True)
-    
-    selected = []
-    total = 0
-    for priority, msg in scored:
-        if total + msg.tokens <= max_tokens:
-            selected.append(msg)
-            total += msg.tokens
-    return selected
-```
-
-这个方案的核心是：**系统消息永远保留**。
-
-什么是系统消息？就是项目背景、用户偏好、约束条件这些"元信息"。它们可能只占 5% 的 token，但对 Agent 的行为影响最大。
+**优先级保留**的核心：系统消息永远保留。项目背景、用户偏好、约束条件这些"元信息"只占 5% 的 token，但对 Agent 行为影响最大。
 
 ## 实际代码示例
 
@@ -193,6 +128,5 @@ context = memory.messages  # 用于 LLM 调用
 如果想要现成的方案，可以直接用 jojo-code 的 `ConversationMemory` 类。代码在 `src/jojo_code/memory/conversation.py`，核心逻辑不到 100 行。
 
 ---
-slug: long-term-memory
 
 记住一点：Agent 的记忆管理不是技术问题，是**优先级决策问题**。你得想清楚：什么信息最重要？什么可以丢？

@@ -3,7 +3,6 @@ slug: tool-development
 sidebar_position: 12
 title: Agent 工具怎么写？从原理到最佳实践
 ---
-slug: tool-development
 
 
 你用 LangGraph 跑通了官方示例，现在想加自己的工具。但官方文档讲得很浅：加个 `@tool` 装饰器就完事了？
@@ -663,6 +662,5 @@ def read_file(path: str) -> str:
 工具是 Agent 的"手脚"，写好工具，Agent 才能做真正有用的事。
 
 ---
-slug: tool-development
 
 工具不是简单的函数包装，而是需要考虑：参数验证、安全检查、资源限制、错误处理、结构化输出。这些做好了，Agent 才可靠。

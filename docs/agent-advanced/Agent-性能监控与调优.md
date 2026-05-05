@@ -3,15 +3,12 @@ slug: performance-monitoring
 sidebar_position: 1
 title: 如何知道你的 Agent 跑得好不好？
 ---
-slug: performance-monitoring
 
 # 如何知道你的 Agent 跑得好不好？
 
-用户投诉"Agent 太慢了"，你打开日志，全是"请求完成"，看不出问题在哪。
+用户投诉"Agent 太慢了"，你打开日志，全是"请求完成"，看不出问题在哪。LLM 调用时间都在 500ms 以内，但整体响应要好几秒——瓶颈可能在工具调用、上下文构建、或者任何一个你没监控到的环节。
 
-我之前遇到过一个案例：用户说 Agent 响应慢，我查了 LLM 调用时间，都是 500ms 以内。后来才发现，是文件读取工具卡住了，一个 100MB 的文件读了好几秒。
-
-这篇文章，我来分享怎么监控 Agent 性能，快速定位瓶颈。
+怎么系统地监控 Agent 性能，快速定位瓶颈？
 
 ## 核心指标
 
@@ -206,6 +203,5 @@ print(f"工具耗时: {metrics.tool_timings}")
 3. **设置告警**：响应时间 > 5秒时发通知
 
 ---
-slug: performance-monitoring
 
 监控不是目的，定位问题才是。先有数据，再谈优化。

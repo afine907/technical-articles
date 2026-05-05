@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-slug: /pipeline-lessons
+slug: pipeline-lessons
 ---
 
 # AI Native Pipeline 踩坑实录
@@ -11,11 +11,7 @@ slug: /pipeline-lessons
 
 ### 问题
 
-最初，我改了一个 Agent 的 prompt，感觉效果更好了。但跑了几次发现：
-
-> "等等，之前这个 case 能过的，怎么现在过不了了？"
-
-没有对比，没有量化，全凭感觉。
+AI Native Pipeline 跑通了基本流程，但实际落地时遇到了一系列问题：改了 prompt 不知道效果变好还是变坏，没有对比、没有量化、全凭感觉。
 
 ### 解决：建立评估框架
 
@@ -304,6 +300,6 @@ spec 定义: 使用 pytest
 
 ---
 
-**上一篇**: [AI Native Pipeline 设计实践](#/articles/ai/AI-Native-Pipeline-设计实践)
+**上一篇**: [AI Native Pipeline 设计实践](/ai-native-pipeline/pipeline-design)
 
-**下一篇**: [Agent 效果评估实战](#/articles/ai/Agent-效果评估实战)
+**下一篇**: [Agent 效果评估实战](/ai-native-pipeline/evaluation)

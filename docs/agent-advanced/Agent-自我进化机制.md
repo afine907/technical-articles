@@ -3,31 +3,13 @@ slug: self-evolution
 sidebar_position: 10
 title: Agent 自我进化：让 Agent 从错误中学习
 ---
-slug: self-evolution
 
 
-你做了一个 Agent，让它写代码。
+Agent 上线后反复犯同样的错误：忘了加异常处理、文件路径写死、连接没关闭。每次都是人工修复，下次还是犯。怎么让它从错误中真正"学到"？
 
-第一次，它忘了加异常处理，程序崩了。你修复了。
-
-第二次，它又忘了加异常处理，程序又崩了。你又修复了。
-
-第三次、第四次...它还是在犯同样的错误。
-
-你开始怀疑：**这玩意儿怎么永远学不会？**
-
-我之前也遇到过这个问题。我做过一个数据处理 Agent，犯了无数次同样的错误：文件路径写死、忘了关连接、异常没处理...
-
-每次都是我手动修复。
-
-后来我加了一个"自我进化机制"：让 Agent 分析自己的错误，生成改进建议，下次避免同样的问题。
-
-效果立竿见影。同一类错误，第一次犯错后，后续基本不再犯。
-
-这篇文章，我来分享怎么让 Agent 具备自我进化能力。
+通过自我进化机制——让 Agent 分析自己的错误，生成改进建议，在后续执行中避免同类问题——同一类错误第一次犯后，后续基本不再犯。
 
 ---
-slug: self-evolution
 
 ## 一、为什么 Agent 不会从错误中学习？
 
@@ -87,7 +69,6 @@ LLM 是无状态的。每次调用，它都不记得上一次发生了什么。
 - 越做越好
 
 ---
-slug: self-evolution
 
 ## 二、自我进化的三种机制
 
@@ -180,7 +161,6 @@ def execute_with_adaptation(task: str, store: ExperienceStore):
 ```
 
 ---
-slug: self-evolution
 
 ## 三、实现：最简单的自我进化 Agent
 
@@ -335,7 +315,6 @@ result = agent.execute("读取 users.yaml 文件")
 ```
 
 ---
-slug: self-evolution
 
 ## 四、进阶：多维度经验库
 
@@ -427,7 +406,6 @@ class LayeredExperienceStore:
 ```
 
 ---
-slug: self-evolution
 
 ## 五、进阶：反思触发策略
 
@@ -521,7 +499,6 @@ class BatchReflector:
 ```
 
 ---
-slug: self-evolution
 
 ## 六、进阶：主动学习 vs 被动学习
 
@@ -571,7 +548,6 @@ def proactive_reflection(task: str, result: str):
 建议：**被动学习为主，主动学习为辅**。
 
 ---
-slug: self-evolution
 
 ## 七、完整架构设计
 
@@ -688,7 +664,6 @@ class ProductionSelfImprovingAgent:
 ```
 
 ---
-slug: self-evolution
 
 ## 八、效果评估
 
@@ -736,7 +711,6 @@ slug: self-evolution
 ```
 
 ---
-slug: self-evolution
 
 ## 九、我踩过的坑
 
@@ -860,7 +834,6 @@ prompt = f"""
 ```
 
 ---
-slug: self-evolution
 
 ## 十、与其他能力的结合
 
@@ -887,7 +860,6 @@ Agent A 学习 → 下次改进
 ```
 
 ---
-slug: self-evolution
 
 ## 十一、总结
 
@@ -910,7 +882,6 @@ slug: self-evolution
 让 Agent 学会反思和积累经验，就是给它进化的能力。
 
 ---
-slug: self-evolution
 
 ## 十二、下一步行动
 
@@ -920,7 +891,6 @@ slug: self-evolution
 4. **测试效果**：对比有无自我进化的成功率差异
 
 ---
-slug: self-evolution
 
 ## 附录：参考资料
 
@@ -930,6 +900,5 @@ slug: self-evolution
 - AutoGen 官方示例 - Learning from Feedback
 
 ---
-slug: self-evolution
 
 进化不是一蹴而就的，是一点一滴积累出来的。
