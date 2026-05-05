@@ -1,6 +1,6 @@
-# afine907-blog
+# afine907-wiki
 
-> 🤖 jojo 的技术空间 — AI Agent 架构设计与 LangGraph 工程实践
+> 🤖 jojo 的技术空间 — 全栈 AI Agent 开发知识库
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-brightgreen)](https://afine907.github.io/)
 [![Docusaurus](https://img.shields.io/badge/Docusaurus-3.10-blue)](https://docusaurus.io/)
@@ -12,44 +12,67 @@
 
 ## 📝 关于
 
-个人技术博客，专注于 AI Agent 架构设计、LangGraph 工程实践，分享从原型到生产的全链路经验。
+全栈 AI Agent 开发工程师的技术知识库，涵盖 Agent 架构、RAG、LLM 集成、前端交互、Python 后端与云原生部署，60+ 篇实战文章。
 
-## 📚 文章分类
+## 📚 文章导航
+
+### 🤖 AI / LLM
 
 | 分类 | 数量 | 说明 |
 |------|------|------|
-| 🚀 AI Native Pipeline | 3 | 从需求到代码的全自动开发流水线 |
-| 🏗️ Agent 架构设计 | 5 | 核心架构与设计模式 |
-| ⚙️ 工程实践 | 7 | LangGraph 编排、状态管理、MCP 等 |
-| ⚡ 进阶能力 | 4 | 流式响应、错误处理、性能监控 |
-| 🏛️ 架构师视角 | 3 | 安全防御、多模型降级、跨语言架构 |
-| 🎯 实战项目 | 1 | 完整开发流程 |
-| 🚢 运维部署 | 1 | 部署与运维指南 |
-| 📊 框架对比 | 1 | LangGraph/LangChain/AutoGen/CrewAI 评测 |
+| Agent 开发 | 16 | 架构设计、工程实践、进阶能力 |
+| LLM 核心技术 | 9 | RAG 架构、向量数据库、Embedding、LLM API 集成 |
+| 架构与框架 | 7 | 框架对比、Pipeline 设计、安全与降级 |
+
+### 🎨 前端技术
+
+| 分类 | 数量 | 说明 |
+|------|------|------|
+| Agent 前端 | 4 | Agent UI 组件、流式渲染、Generative UI |
+| 前端工程化 | 3 | 监控、微前端、自动化测试 |
+
+### 🐍 后端技术
+
+| 分类 | 数量 | 说明 |
+|------|------|------|
+| Python 后端实践 | 4 | FastAPI 服务、数据库设计、Agent API |
+
+### ☁️ 云原生部署
+
+| 分类 | 数量 | 说明 |
+|------|------|------|
+| 部署与运维 | 6 | Docker、K8s、CI/CD、监控告警、生产环境 |
+
+### 🚀 项目实战
+
+| 分类 | 数量 | 说明 |
+|------|------|------|
+| 项目实战 | 9 | Agent 实战项目、架构解析与技术总结 |
 
 ## 🛠️ 技术栈
 
 - **框架**: [Docusaurus](https://docusaurus.io/) 3.10
 - **部署**: GitHub Pages
+- **包管理**: pnpm
 - **搜索**: [@easyops-cn/docusaurus-search-local](https://github.com/easyops-cn/docusaurus-search-local)
 
 ## 🚀 本地开发
 
 ```bash
 # 安装依赖
-npm install
+pnpm install
 
 # 启动开发服务器
-npm start
+pnpm start
 
 # 构建静态文件
-npm run build
+pnpm build
 ```
 
 ## 📂 目录结构
 
 ```
-afine907-blog/
+afine907-wiki/
 ├── docs/                        # 文章目录
 │   ├── intro.md                 # 首页内容
 │   ├── ai-native-pipeline/      # AI Native Pipeline 系列
@@ -57,9 +80,17 @@ afine907-blog/
 │   ├── agent-engineering/       # 工程实践
 │   ├── agent-advanced/          # 进阶能力
 │   ├── agent-architecture-level/# 架构师视角
-│   ├── agent-projects/          # 实战项目
+│   ├── agent-framework/         # 框架对比
+│   ├── agent-frontend/          # Agent 前端
 │   ├── agent-ops/               # 运维部署
-│   └── agent-framework/         # 框架对比
+│   ├── agent-projects/          # 实战项目
+│   ├── ai-projects/             # AI 项目实战
+│   ├── backend-python/          # Python 后端
+│   ├── cloud-native/            # 云原生部署
+│   ├── frontend-engineering/    # 前端工程化
+│   ├── fullstack-agent-project/ # 全栈 Agent 项目
+│   ├── llm-integration/         # LLM 集成
+│   └── rag/                     # RAG 系统
 ├── src/
 │   ├── components/              # 自定义组件
 │   │   ├── ArticleCard/         # 文章卡片
