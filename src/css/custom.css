@@ -38,3 +38,8 @@
 .sidebarViewport_aRkj {
   overflow-y: auto;
 }
+
+/* Admonition enhancements */
+.admonition {
+  border-radius: 8px;
+}

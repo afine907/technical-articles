@@ -57,17 +57,17 @@ function FeaturedArticles() {
     {
       title: '🚀 AI Native Pipeline 设计实践',
       description: '从需求到代码的全自动开发流水线',
-      docId: 'ai-native-pipeline/AI-Native-Pipeline-设计实践',
+      docId: 'ai-native-pipeline/pipeline-design',
     },
     {
       title: '🛡️ Agent 安全威胁与防御策略',
       description: 'jojo-code 安全模块源码级剖析',
-      docId: 'agent-architecture-level/Agent-安全威胁与防御策略',
+      docId: 'agent-architecture-level/security-defense',
     },
     {
       title: '📊 主流 Agent 框架对比评测',
       description: 'LangGraph、LangChain、AutoGen、CrewAI 深度评测',
-      docId: 'agent-framework/主流-Agent-框架对比评测',
+      docId: 'agent-framework/framework-comparison',
     },
   ];
 

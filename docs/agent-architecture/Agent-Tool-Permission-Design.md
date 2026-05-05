@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Agent 工具权限管理
+slug: tool-permission-design
 ---
 
 # Agent 工具权限管理

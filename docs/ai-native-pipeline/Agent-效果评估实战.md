@@ -350,6 +350,6 @@ Agent 评估的核心是：
 **没有评估，就没有改进**。
 
 
-**上一篇**: [AI Native Pipeline 踩坑实录](#/articles/ai/AI-Native-Pipeline-踩坑实录)
+**上一篇**: [AI Native Pipeline 踩坑实录](pipeline-lessons)
 
 **项目地址**: https://github.com/afine907/ai-native-pipeline

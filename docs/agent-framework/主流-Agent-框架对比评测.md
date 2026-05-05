@@ -63,7 +63,9 @@ Agent 的工作流程是这样的：
 
 虽然 LangChain 后面加了 Agent 模块，但那个封装太重了，调试困难得要命。
 
-**教训**：star 数量不等于适合你。
+:::caution star 数量不等于适合你
+选框架不能只看 GitHub star，核心需求匹配才是关键。
+:::
 
 ### 坑二：忽略学习曲线
 
@@ -73,7 +75,9 @@ Agent 的工作流程是这样的：
 
 他花了 2 周才把 AutoGen 跑通，后来换成 LangGraph，3 天就搞定了。
 
-**教训**：不要杀鸡用牛刀。
+:::tip 不要杀鸡用牛刀
+先明确需求（单 Agent 还是多 Agent？），再选框架。
+:::
 
 ### 坑三：版本兼容地狱
 
@@ -91,7 +95,9 @@ from langchain_core.prompts import PromptTemplate
 
 这种破坏性更新，让我不得不锁定版本号。
 
-**教训**：生产环境必须锁定版本，用 `==` 不用 `^`。
+:::warning 生产环境必须锁定版本
+用 `==` 不用 `^`，避免破坏性更新导致线上故障。
+:::
 
 
 ## 二、5 个主流框架核心对比
@@ -919,6 +925,13 @@ def multi_agent_collaboration(state):
 ## 十二、总结：我的推荐
 
 说了这么多，最后给你一个明确建议：
+
+:::tip 选型速查
+- **新手入门**：LangChain → LangGraph
+- **生产级应用**：LangGraph（首选）
+- **多 Agent 协作**：AutoGen / CrewAI
+- **Azure 企业**：Semantic Kernel
+:::
 
 ### 如果你是新手
 

@@ -297,6 +297,6 @@ spec 定义: 使用 pytest
 **Less is More**：五个节点，每个打磨到极致，比十个节点各做一半要好。
 
 
-**上一篇**: [AI Native Pipeline 设计实践](#/articles/ai/AI-Native-Pipeline-设计实践)
+**上一篇**: [AI Native Pipeline 设计实践](pipeline-design)
 
-**下一篇**: [Agent 效果评估实战](#/articles/ai/Agent-效果评估实战)
+**下一篇**: [Agent 效果评估实战](evaluation)

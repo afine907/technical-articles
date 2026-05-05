@@ -38,22 +38,28 @@ Three files must be kept in sync: the markdown file, `sidebars.js`, and `src/com
 1. **Create the markdown file** in `docs/<category>/` with frontmatter:
    ```yaml
    ---
-   sidebar_position: N        # position within the category (1-indexed)
+   sidebar_position: N
    title: 文章标题
-   slug: english-url-slug     # REQUIRED for Chinese-named files, skip for English-named files
+   slug: english-url-slug     # REQUIRED — every doc must have a slug
    ---
    ```
 2. **Add doc ID to `sidebars.js`** — use the file path format `category/filename` (no extension):
    ```js
    items: ['category/article-name', ...]
    ```
-3. **Add entry to `ArticleList/index.js`** — use the `slug` as `docId` (this becomes the URL path):
+3. **Add entry to `ArticleList/index.js`** — use `category/slug` as `docId`:
    ```js
-   { docId: 'english-url-slug', title: '文章标题', description: '一句话描述' }
+   { docId: 'category/english-url-slug', title: '文章标题', description: '一句话描述' }
    ```
 4. Run `npm run build` to verify — no broken link warnings for the new article.
 
-**Key rule**: `sidebars.js` uses file paths (`category/file-name`), `ArticleList` uses slugs (`english-url-slug`). They look different but both resolve to the same page because Docusaurus maps slugs to doc IDs.
+### Slug & docId Rules
+
+- **Every doc MUST have a `slug` in frontmatter** — no exceptions. Docusaurus generates bad URLs (Chinese characters, ugly filenames) without slugs.
+- `sidebars.js` uses **file paths**: `category/file-name`
+- `ArticleList` and `FeaturedArticles` use **URL paths**: `category/slug`
+- `<Link to={/${docId}}>` in components generates a URL path, so `docId` must be the actual built URL (e.g. `ai-native-pipeline/pipeline-design`), not a raw file name or slug alone.
+- Docs without a category prefix use just the slug (e.g. `slug-value`).
 
 ## Adding New Categories
 
@@ -83,7 +89,7 @@ Three files must be kept in sync: the markdown file, `sidebars.js`, and `src/com
      label: '🏷️ 分类显示名称',
      description: '分类描述',
      items: [
-       { docId: 'slug-1', title: '文章1', description: '...' },
+       { docId: 'category/slug-1', title: '文章1', description: '...' },
      ],
    },
    ```

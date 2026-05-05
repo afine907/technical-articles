@@ -58,6 +58,26 @@ const config = {
       colorMode: {
         respectPrefersColorScheme: true,
       },
+      breadcrumbs: true,
+      docs: {
+        sidebar: {
+          autoCollapseCategories: true,
+          hideable: true,
+        },
+      },
+      announcementBar: {
+        id: 'welcome',
+        content: '欢迎来到 jojo 的技术空间 — AI Agent 架构设计与工程实践',
+        backgroundColor: 'var(--ifm-color-primary)',
+        textColor: '#fff',
+        isCloseable: true,
+      },
+      metadata: [
+        { name: 'keywords', content: 'AI Agent, LangGraph, LLM, 架构设计, 工程实践' },
+        { name: 'author', content: 'jojo' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:locale', content: 'zh_CN' },
+      ],
       navbar: {
         title: 'jojo 的技术空间',
         logo: {
@@ -86,7 +106,7 @@ const config = {
             items: [
               {
                 label: 'AI Native Pipeline 系列',
-                to: '/category/ai-native-pipeline-系列',
+                to: '/ai-native-pipeline/pipeline-design',
               },
             ],
           },
@@ -106,6 +126,7 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
         additionalLanguages: ['python', 'typescript', 'bash', 'json', 'yaml', 'markdown'],
+        showLineNumbers: true,
       },
     }),
 };

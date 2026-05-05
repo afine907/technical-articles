@@ -67,13 +67,15 @@ slug: pipeline-design
 
 ### Planning Gate：关键节点人工确认
 
+:::note 关键决策必须由人确认
 AI 可以做很多事，但关键决策必须由人确认。
+:::
 
 ```
 [Step 2/5] 分析需求...
   ✅ P0: JWT Token 生成/验证
   ✅ P1: Token 刷新
-  
+
   [PAUSE] 确认需求? [y/n]
 ```
 
@@ -224,4 +226,4 @@ spec 定义: 数据模型 User
 
 **项目地址**: https://github.com/afine907/ai-native-pipeline
 
-**下一篇**: [AI Native Pipeline 踩坑实录](#/articles/ai/AI-Native-Pipeline-踩坑实录)
+**下一篇**: [AI Native Pipeline 踩坑实录](pipeline-lessons)
