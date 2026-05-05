@@ -29,6 +29,7 @@ const sidebars = {
         'agent-architecture/jojo-code-核心架构解析',
         'agent-architecture/Agent-多Agent协作指南',
         'agent-architecture/Agent-记忆系统设计',
+        'jojo-code/jojo-code-from-scratch',
       ],
     },
     {
@@ -46,6 +47,8 @@ const sidebars = {
         'agent-engineering/Agent-Prompt设计指南',
         'agent-engineering/Agent-工具开发指南',
         'agent-engineering/Agent-测试指南',
+        'agent-engineering/Agent-部署上线指南',
+        'agent-engineering/Agent-实战项目开发',
       ],
     },
     {
@@ -73,28 +76,6 @@ const sidebars = {
         'agent-architecture-level/Agent-安全威胁与防御策略',
         'agent-architecture-level/Agent-多模型降级策略',
         'agent-architecture-level/typescript-python-architecture-practice',
-      ],
-    },
-    {
-      type: 'category',
-      label: '🎯 实战项目',
-      link: {
-        type: 'generated-index',
-        description: 'Agent 实战项目开发',
-      },
-      items: [
-        'agent-projects/Agent-实战项目开发',
-      ],
-    },
-    {
-      type: 'category',
-      label: '🚢 运维部署',
-      link: {
-        type: 'generated-index',
-        description: 'Agent 部署与运维',
-      },
-      items: [
-        'agent-ops/Agent-部署上线指南',
       ],
     },
     {

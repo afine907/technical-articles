@@ -1,10 +1,8 @@
 ---
 slug: deployment
-sidebar_position: 1
+sidebar_position: 8
 title: Agent 部署上线全流程：从开发到生产
 ---
-slug: deployment
-
 
 你的 Agent 在本地跑得很好，现在要上线给用户用。但一上线就各种问题：环境变量找不到、日志看不到、资源泄漏、API 限流...
 
@@ -653,7 +651,5 @@ async def call_llm(messages):
 4. **安全加固**：API Key 认证 + 限流 + 输入验证
 5. **写部署脚本**：自动化部署流程
 
----
-slug: deployment
 
 部署的核心是：**环境一致、配置外置、日志可查、错误可恢复、安全可控**。
