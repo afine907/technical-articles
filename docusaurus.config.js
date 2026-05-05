@@ -68,7 +68,7 @@ const config = {
           {
             type: 'docSidebar',
             sidebarId: 'aiSidebar',
-            label: '🤖 AI / LLM',
+            label: '文章集合',
             position: 'left',
           },
           {
