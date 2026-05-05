@@ -86,7 +86,7 @@ const config = {
             items: [
               {
                 label: 'AI Native Pipeline 系列',
-                to: '/category/ai-native-pipeline-系列',
+                to: '/category/-ai-native-pipeline-系列',
               },
             ],
           },
