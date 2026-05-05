@@ -1,9 +1,8 @@
 ---
-slug: jojo-code-architecture
 sidebar_position: 1
 title: jojo-code 架构解析
----
 slug: jojo-code-architecture
+---
 
 # jojo-code 架构解析
 
@@ -199,7 +198,5 @@ Python 和 TypeScript 的接口定义手动维护，经常不一致。
 
 解决：加单元测试，验证接口兼容性。
 
----
-slug: jojo-code-architecture
 
 jojo-code 是一个最小可行的 Agent CLI 架构，核心代码不到 1000 行，适合学习参考。

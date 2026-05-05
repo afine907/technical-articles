@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-slug: /pipeline-lessons
+slug: pipeline-lessons
 ---
 
 # AI Native Pipeline 踩坑实录
@@ -94,7 +94,6 @@ Agent 输出：{output}
 - 执行时间是否缩短？
 ```
 
----
 
 ## 坑二：代码分析依赖外部工具
 
@@ -150,7 +149,6 @@ ctags -R --fields=+n --languages=Python ./src/
 # 3. 让 LLM 理解代码语义
 ```
 
----
 
 ## 坑三：Agent 之间信息传递不清晰
 
@@ -187,7 +185,6 @@ coding-agent 收到 spec.md，但不知道：
 
 **每个 Agent 都往 Task Spec 里写内容**，后续 Agent 就能看到完整上下文。
 
----
 
 ## 坑四：验收标准需要人工预定义
 
@@ -224,7 +221,6 @@ spec 定义: 使用 pytest
 
 这样用户不需要懂测试，Agent 自动生成验收标准。
 
----
 
 ## 坑五：复杂任务不知道怎么拆
 
@@ -260,7 +256,6 @@ spec 定义: 使用 pytest
 - 阶段3（验收）: T5
 ```
 
----
 
 ## 坑六：没有 Planning Gate，错误累积
 
@@ -290,7 +285,6 @@ spec 定义: 使用 pytest
 - **Step 2 后**：确认需求范围
 - **Step 4 后**：确认代码改动
 
----
 
 ## 总结
 
@@ -302,7 +296,6 @@ spec 定义: 使用 pytest
 
 **Less is More**：五个节点，每个打磨到极致，比十个节点各做一半要好。
 
----
 
 **上一篇**: [AI Native Pipeline 设计实践](#/articles/ai/AI-Native-Pipeline-设计实践)
 

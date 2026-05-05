@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-slug: /evaluation
+slug: evaluation
 ---
 
 # Agent 效果评估实战
@@ -349,7 +349,6 @@ Agent 评估的核心是：
 
 **没有评估，就没有改进**。
 
----
 
 **上一篇**: [AI Native Pipeline 踩坑实录](#/articles/ai/AI-Native-Pipeline-踩坑实录)
 

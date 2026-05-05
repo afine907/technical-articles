@@ -1,9 +1,8 @@
 ---
-slug: error-handling
 sidebar_position: 1
 title: Agent 崩了怎么办？错误处理与重试机制
----
 slug: error-handling
+---
 
 # Agent 崩了怎么办？错误处理与重试机制
 
@@ -472,7 +471,5 @@ except FileNotFoundError:
   └── □ 不暴露敏感信息
 ```
 
----
-slug: error-handling
 
 **核心认知**：错误不是"会不会发生"，而是"何时发生"。提前设计好重试、降级、隔离机制，Agent 才能稳定运行。

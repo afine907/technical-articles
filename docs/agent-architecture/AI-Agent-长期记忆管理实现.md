@@ -1,9 +1,8 @@
 ---
-slug: long-term-memory
 sidebar_position: 1
 title: 如何让 Agent 记住重要信息？
----
 slug: long-term-memory
+---
 
 # 如何让 Agent 记住重要信息？
 
@@ -191,8 +190,5 @@ context = memory.messages  # 用于 LLM 调用
 3. **监控 token 使用**：实时输出 token 数量，避免突然超限
 
 如果想要现成的方案，可以直接用 jojo-code 的 `ConversationMemory` 类。代码在 `src/jojo_code/memory/conversation.py`，核心逻辑不到 100 行。
-
----
-slug: long-term-memory
 
 记住一点：Agent 的记忆管理不是技术问题，是**优先级决策问题**。你得想清楚：什么信息最重要？什么可以丢？

@@ -1,9 +1,8 @@
 ---
-slug: self-evolution
 sidebar_position: 10
 title: Agent 自我进化：让 Agent 从错误中学习
----
 slug: self-evolution
+---
 
 
 你做了一个 Agent，让它写代码。
@@ -26,8 +25,6 @@ slug: self-evolution
 
 这篇文章，我来分享怎么让 Agent 具备自我进化能力。
 
----
-slug: self-evolution
 
 ## 一、为什么 Agent 不会从错误中学习？
 
@@ -86,8 +83,6 @@ LLM 是无状态的。每次调用，它都不记得上一次发生了什么。
 - 积累经验教训
 - 越做越好
 
----
-slug: self-evolution
 
 ## 二、自我进化的三种机制
 
@@ -179,8 +174,6 @@ def execute_with_adaptation(task: str, store: ExperienceStore):
     return llm.invoke(enhanced_prompt)
 ```
 
----
-slug: self-evolution
 
 ## 三、实现：最简单的自我进化 Agent
 
@@ -334,8 +327,6 @@ result = agent.execute("读取 users.yaml 文件")
 └─────────────────────────────────────────────┘
 ```
 
----
-slug: self-evolution
 
 ## 四、进阶：多维度经验库
 
@@ -426,8 +417,6 @@ class LayeredExperienceStore:
         return self.error_handlers.get(error_type, "")
 ```
 
----
-slug: self-evolution
 
 ## 五、进阶：反思触发策略
 
@@ -520,8 +509,6 @@ class BatchReflector:
         return reflection
 ```
 
----
-slug: self-evolution
 
 ## 六、进阶：主动学习 vs 被动学习
 
@@ -570,8 +557,6 @@ def proactive_reflection(task: str, result: str):
 
 建议：**被动学习为主，主动学习为辅**。
 
----
-slug: self-evolution
 
 ## 七、完整架构设计
 
@@ -687,8 +672,6 @@ class ProductionSelfImprovingAgent:
                 )
 ```
 
----
-slug: self-evolution
 
 ## 八、效果评估
 
@@ -735,8 +718,6 @@ slug: self-evolution
     ─── 有进化（快速提升）
 ```
 
----
-slug: self-evolution
 
 ## 九、我踩过的坑
 
@@ -859,8 +840,6 @@ prompt = f"""
 """
 ```
 
----
-slug: self-evolution
 
 ## 十、与其他能力的结合
 
@@ -886,8 +865,6 @@ Agent B（导师）分析 → 给出改进建议
 Agent A 学习 → 下次改进
 ```
 
----
-slug: self-evolution
 
 ## 十一、总结
 
@@ -909,8 +886,6 @@ slug: self-evolution
 
 让 Agent 学会反思和积累经验，就是给它进化的能力。
 
----
-slug: self-evolution
 
 ## 十二、下一步行动
 
@@ -919,8 +894,6 @@ slug: self-evolution
 3. **建立经验库**：把反思结果结构化存储
 4. **测试效果**：对比有无自我进化的成功率差异
 
----
-slug: self-evolution
 
 ## 附录：参考资料
 
@@ -929,7 +902,5 @@ slug: self-evolution
 - LangGraph 官方文档 - Reflection Pattern
 - AutoGen 官方示例 - Learning from Feedback
 
----
-slug: self-evolution
 
 进化不是一蹴而就的，是一点一滴积累出来的。

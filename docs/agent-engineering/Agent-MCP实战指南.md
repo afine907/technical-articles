@@ -605,6 +605,5 @@ async def call_tool(name: str, arguments: dict):
 
 MCP 的核心价值是：**一次开发，到处可用**。虽然现在生态还不大，但协议设计得很清晰，值得投入时间学习。
 
----
 
 MCP 就像 AI 的 USB-C：统一的接口，让 Agent 能即插即用各种工具和数据源。现在还在早期，但值得提前布局。

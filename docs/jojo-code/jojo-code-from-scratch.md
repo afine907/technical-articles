@@ -1,3 +1,8 @@
+---
+sidebar_position: 6
+title: jojo-Code：从零构建一个 AI 编码助手
+---
+
 # jojo-Code：从零构建一个 AI 编码助手
 
 > 为什么自己造轮子？因为想真正理解 Agent 是如何工作的。

@@ -1,7 +1,7 @@
 ---
-slug: deployment
 sidebar_position: 8
 title: Agent 部署上线全流程：从开发到生产
+slug: deployment
 ---
 
 你的 Agent 在本地跑得很好，现在要上线给用户用。但一上线就各种问题：环境变量找不到、日志看不到、资源泄漏、API 限流...

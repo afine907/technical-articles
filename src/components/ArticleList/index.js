@@ -21,6 +21,7 @@ const categories = [
       { docId: 'jojo-code-architecture', title: 'jojo-code 核心架构解析', description: 'jojo-code 核心架构源码级解析' },
       { docId: 'multi-agent-collaboration', title: 'Agent 多 Agent 协作指南', description: '多 Agent 协作架构与实现' },
       { docId: 'memory-system', title: 'Agent 记忆系统设计', description: 'Agent 记忆系统完整设计' },
+      { docId: 'jojo-code/jojo-code-from-scratch', title: 'jojo-Code：从零构建一个 AI 编码助手', description: '从零构建 AI 编码助手的完整过程' },
     ],
   },
   {
@@ -34,6 +35,8 @@ const categories = [
       { docId: 'prompt-design', title: 'Agent Prompt 设计指南', description: 'Agent Prompt 工程最佳实践' },
       { docId: 'tool-development', title: 'Agent 工具开发指南', description: 'Agent 工具开发完整指南' },
       { docId: 'testing', title: 'Agent 测试指南', description: 'Agent 测试策略与实践' },
+      { docId: 'deployment', title: 'Agent 部署上线指南', description: 'Agent 部署与运维完整指南' },
+      { docId: 'project-development', title: 'Agent 实战项目开发', description: 'Agent 实战项目完整开发流程' },
     ],
   },
   {
@@ -53,20 +56,6 @@ const categories = [
       { docId: 'security-defense', title: 'Agent 安全威胁与防御策略', description: 'jojo-code 安全模块源码级剖析' },
       { docId: 'model-degradation', title: 'Agent 多模型降级策略', description: '多模型架构与降级算法实战' },
       { docId: 'agent-architecture-level/typescript-python-architecture-practice', title: 'TypeScript + Python 双语言架构实践', description: '跨语言架构设计与实现' },
-    ],
-  },
-  {
-    label: '🎯 实战项目',
-    description: 'Agent 实战项目开发',
-    items: [
-      { docId: 'project-development', title: 'Agent 实战项目开发', description: 'Agent 实战项目完整开发流程' },
-    ],
-  },
-  {
-    label: '🚢 运维部署',
-    description: 'Agent 部署与运维',
-    items: [
-      { docId: 'deployment', title: 'Agent 部署上线指南', description: 'Agent 部署与运维完整指南' },
     ],
   },
   {

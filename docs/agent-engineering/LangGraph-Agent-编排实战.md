@@ -1,9 +1,8 @@
 ---
-slug: langgraph-orchestration
 sidebar_position: 1
 title: 用 LangGraph 构建你的第一个 Agent：从原理到实战
----
 slug: langgraph-orchestration
+---
 
 # 用 LangGraph 构建你的第一个 Agent：从原理到实战
 
@@ -621,7 +620,5 @@ async def run_with_streaming(message: str):
 | 工具报错 | 参数类型错误 | 加类型转换 |
 | 响应太慢 | 串行执行 | 并行化工具调用 |
 
----
-slug: langgraph-orchestration
 
 **核心认知**：Agent 不是魔法，是 LLM + 工具 + 循环的组合。理解了这三者的关系，你就能构建任何类型的 Agent。

@@ -1,9 +1,8 @@
 ---
-slug: multi-agent-collaboration
 sidebar_position: 10
 title: 单 Agent 不够用？多 Agent 协作的三大模式和五个坑
----
 slug: multi-agent-collaboration
+---
 
 
 你让一个 Agent 又分析需求、又写代码、又测试，结果它什么都做得一般。
@@ -483,7 +482,5 @@ def execute_node(state):
 
 多 Agent 不是为了炫技，是为了让每个环节都专业。但专业是有代价的——更多的 Agent、更多的状态管理、更多的调试。
 
----
-slug: multi-agent-collaboration
 
 一个 Agent 做所有事，就像一个人又当厨师又当服务员又当收银员，效率和 quality 都有限。多 Agent 就是分工协作，每个人专注自己的领域。但分工的前提是：任务复杂到值得分工。

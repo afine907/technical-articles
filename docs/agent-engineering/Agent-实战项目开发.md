@@ -1,7 +1,7 @@
 ---
-slug: project-development
 sidebar_position: 9
 title: 实战：用 Agent 从零开发一个完整项目
+slug: project-development
 ---
 
 理论学了一堆，今天来真格的。

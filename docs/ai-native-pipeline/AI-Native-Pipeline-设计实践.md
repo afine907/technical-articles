@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-slug: /pipeline-design
+slug: pipeline-design
 ---
 
 # AI Native Pipeline：从需求到代码的全自动开发流水线
@@ -221,7 +221,6 @@ spec 定义: 数据模型 User
 - **更好的上下文传递** - 让每个 Agent 看到完整决策链
 - **更智能的验证** - 自动推断更多验收标准
 
----
 
 **项目地址**: https://github.com/afine907/ai-native-pipeline
 
