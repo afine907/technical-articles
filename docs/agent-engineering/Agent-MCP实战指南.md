@@ -5,9 +5,7 @@ slug: mcp-guide
 ---
 
 
-Claude 发布了 MCP（Model Context Protocol），大家都在讨论。但真正用起来的人不多——因为文档太抽象，示例太少。
-
-我花了一周时间研究 MCP，从零写了一个 MCP Server，踩了很多坑。这篇文章，我把 MCP 从原理到实战一次性讲清楚。
+Claude 发布了 MCP（Model Context Protocol），大家都在讨论。MCP 到底解决了什么问题？简单说：它给了 AI Agent 一个标准化的方式来连接外部数据源和工具——读 GitHub 仓库、查 Slack 消息、访问数据库——不用为每个服务单独写集成代码。
 
 ## MCP 到底解决什么问题？
 

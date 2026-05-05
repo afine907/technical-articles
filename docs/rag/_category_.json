@@ -1,0 +1,8 @@
+{
+  "label": "RAG 知识库构建",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "description": "RAG 系统架构、向量数据库、Embedding 选型与评估优化"
+  }
+}

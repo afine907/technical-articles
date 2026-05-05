@@ -1,22 +1,15 @@
 ---
 sidebar_position: 1
-slug: /pipeline-design
+slug: pipeline-design
 ---
 
 # AI Native Pipeline：从需求到代码的全自动开发流水线
 
 > 一个人，一个指令，完成从需求分析到代码验收的全流程。
 
-## 起因
+每次手动复制需求文档给 AI、等它生成代码、再手动测试——Agent 编排太复杂：Agent 之间信息传递不清晰，改了一个 Agent 不知道效果变好还是变坏，用户不知道 Agent 在干什么。
 
-做 AI Agent 开发一年多，踩过不少坑。最痛的一个点是：**Agent 编排太复杂**。
-
-买个 Agent 框架，配一堆工具，调各种 prompt，最后发现：
-- Agent 之间信息传递不清晰
-- 改了一个 Agent，不知道效果变好还是变坏
-- 用户不知道 Agent 在干什么
-
-于是我想：**能不能做一个简单的、可追溯的、可评估的开发流水线？**
+能不能做一个简单的、可追溯的、可评估的开发流水线？
 
 ## 核心设计
 
@@ -225,4 +218,4 @@ spec 定义: 数据模型 User
 
 **项目地址**: https://github.com/afine907/ai-native-pipeline
 
-**下一篇**: [AI Native Pipeline 踩坑实录](#/articles/ai/AI-Native-Pipeline-踩坑实录)
+**下一篇**: [AI Native Pipeline 踩坑实录](/ai-native-pipeline/pipeline-lessons)

@@ -16,7 +16,7 @@ function HomepageHeader() {
             <h1 className="hero__title">{siteConfig.title}</h1>
             <p className="hero__subtitle">{siteConfig.tagline}</p>
             <p className={styles.heroDescription}>
-              专注于 AI Agent 架构设计、LangGraph 工程实践，分享从原型到生产的全链路经验。
+              全栈 AI Agent 开发工程师的技术知识库，涵盖 Agent 架构、RAG、LLM 集成、前端交互、Python 后端与云原生部署。
             </p>
             <div className={styles.buttons}>
               <Link
@@ -34,11 +34,11 @@ function HomepageHeader() {
           </div>
           <div className={styles.heroStats}>
             <div className={styles.statItem}>
-              <span className={styles.statNumber}>26+</span>
+              <span className={styles.statNumber}>60+</span>
               <span className={styles.statLabel}>篇文章</span>
             </div>
             <div className={styles.statItem}>
-              <span className={styles.statNumber}>8</span>
+              <span className={styles.statNumber}>14</span>
               <span className={styles.statLabel}>个分类</span>
             </div>
             <div className={styles.statItem}>
@@ -57,17 +57,17 @@ function FeaturedArticles() {
     {
       title: '🚀 AI Native Pipeline 设计实践',
       description: '从需求到代码的全自动开发流水线',
-      docId: 'ai-native-pipeline/AI-Native-Pipeline-设计实践',
+      docId: 'ai-native-pipeline/pipeline-design',
     },
     {
       title: '🛡️ Agent 安全威胁与防御策略',
       description: 'jojo-code 安全模块源码级剖析',
-      docId: 'agent-architecture-level/Agent-安全威胁与防御策略',
+      docId: 'agent-architecture-level/security-defense',
     },
     {
       title: '📊 主流 Agent 框架对比评测',
       description: 'LangGraph、LangChain、AutoGen、CrewAI 深度评测',
-      docId: 'agent-framework/主流-Agent-框架对比评测',
+      docId: 'agent-framework/framework-comparison',
     },
   ];
 

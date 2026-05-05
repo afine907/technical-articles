@@ -4,12 +4,24 @@
   padding: 0 1.5rem;
 }
 
-.categorySection {
+.groupSection {
   margin-bottom: 4rem;
 }
 
+.groupTitle {
+  font-size: 2rem;
+  margin: 0 0 2rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--ifm-color-emphasis-300);
+}
+
+.categorySection {
+  margin-bottom: 3rem;
+  padding-left: 0.5rem;
+}
+
 .categoryTitle {
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   margin: 0 0 0.5rem 0;
 }
 
@@ -28,8 +40,12 @@
   .grid {
     grid-template-columns: 1fr;
   }
-  
-  .categoryTitle {
+
+  .groupTitle {
     font-size: 1.5rem;
+  }
+
+  .categoryTitle {
+    font-size: 1.25rem;
   }
 }

@@ -1,0 +1,8 @@
+{
+  "label": "Agent 前端交互",
+  "position": 11,
+  "link": {
+    "type": "generated-index",
+    "description": "Agent UI 设计、SSE 流式渲染、Generative UI 与可视化调试"
+  }
+}

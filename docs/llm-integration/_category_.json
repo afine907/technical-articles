@@ -1,0 +1,8 @@
+{
+  "label": "LLM API 集成实战",
+  "position": 9,
+  "link": {
+    "type": "generated-index",
+    "description": "多 LLM 统一接入、Prompt 工程、输出结构化与成本优化"
+  }
+}

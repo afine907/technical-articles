@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-slug: /evaluation
+slug: evaluation
 ---
 
 # Agent 效果评估实战
@@ -351,6 +351,6 @@ Agent 评估的核心是：
 
 ---
 
-**上一篇**: [AI Native Pipeline 踩坑实录](#/articles/ai/AI-Native-Pipeline-踩坑实录)
+**上一篇**: [AI Native Pipeline 踩坑实录](/ai-native-pipeline/pipeline-lessons)
 
 **项目地址**: https://github.com/afine907/ai-native-pipeline

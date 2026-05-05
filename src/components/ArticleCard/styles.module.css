@@ -27,8 +27,8 @@
 
 .category {
   display: inline-block;
-  background: var(--ifm-color-primary-lightest);
-  color: var(--ifm-color-primary-dark);
+  background: var(--ifm-color-primary);
+  color: #fff;
   padding: 0.25rem 0.75rem;
   border-radius: 12px;
   font-size: 0.75rem;

@@ -3,13 +3,10 @@ slug: jojo-code-architecture
 sidebar_position: 1
 title: jojo-code 架构解析
 ---
-slug: jojo-code-architecture
 
 # jojo-code 架构解析
 
-我做了很多 Agent 项目，最后沉淀下来一个开源项目：jojo-code。
-
-这篇文章，我来拆解它的架构，帮你理解一个 Agent CLI 是怎么设计的。
+市面上的 AI Coding Agent（Cursor、Copilot）都是闭源的，想理解 Agent 的核心架构，最好的方式是从零实现一个。jojo-code 是一个基于 LangGraph 的轻量级 AI Coding Agent，这篇文章拆解它的架构设计。
 
 ## 整体架构
 
@@ -200,6 +197,5 @@ Python 和 TypeScript 的接口定义手动维护，经常不一致。
 解决：加单元测试，验证接口兼容性。
 
 ---
-slug: jojo-code-architecture
 
 jojo-code 是一个最小可行的 Agent CLI 架构，核心代码不到 1000 行，适合学习参考。

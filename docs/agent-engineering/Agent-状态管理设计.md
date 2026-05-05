@@ -3,7 +3,6 @@ slug: state-management
 sidebar_position: 1
 title: Agent 状态混乱？三招搞定
 ---
-slug: state-management
 
 # Agent 状态混乱？三招搞定
 
@@ -203,6 +202,5 @@ def execute_node(state: AgentState) -> dict:
 如果想要现成的方案，可以直接看 jojo-code 的实现，在 `src/jojo_code/agent/state.py` 里。核心代码不到 50 行。
 
 ---
-slug: state-management
 
 记住一点：状态管理的目标是让状态变化可预测。用 TypedDict 定义结构，用 Annotated 控制合并，用边界条件防止失控。

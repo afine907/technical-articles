@@ -5,11 +5,7 @@ title: TypeScript + Python，跨语言架构实践
 
 # TypeScript + Python，跨语言架构实践
 
-前端用 TypeScript，AI 后端用 Python，怎么协作？
-
-我之前做一个 Agent CLI，纠结了很久：前端用 TypeScript 写界面更顺手，但 AI 相关的库都是 Python 的。最后我选了双语言架构：TypeScript CLI + Python Agent。
-
-这篇文章，我来分享跨语言架构的设计和实现。
+前端用 TypeScript 写界面更顺手，AI 相关的库都是 Python 的——Agent CLI 项目选型时怎么组合？双语言架构（TypeScript CLI + Python Agent）的设计和实现。
 
 ## 架构图
 

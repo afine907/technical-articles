@@ -3,14 +3,11 @@ slug: multi-agent-collaboration
 sidebar_position: 10
 title: 单 Agent 不够用？多 Agent 协作的三大模式和五个坑
 ---
-slug: multi-agent-collaboration
 
 
-你让一个 Agent 又分析需求、又写代码、又测试，结果它什么都做得一般。
+一个 Agent 承担所有角色——分析需求、写代码、测试——结果什么都做得一般。拆成多个专责 Agent（分析师、设计师、程序员、测试员）后，代码质量提升了一个档次。
 
-我之前用 LangGraph 做过一个项目助手，一个 Agent 承担所有角色。用户输入需求后，Agent 给出的代码经常有 bug，测试也不全面。后来拆成 4 个 Agent（分析师、设计师、程序员、测试员），代码质量提升了一个档次。
-
-这篇文章，我深入讲讲多 Agent 协作的真实难点和解决方案。
+多 Agent 协作的真实难点和解决方案。
 
 ## 核心问题：为什么单 Agent 做不好？
 
@@ -484,6 +481,5 @@ def execute_node(state):
 多 Agent 不是为了炫技，是为了让每个环节都专业。但专业是有代价的——更多的 Agent、更多的状态管理、更多的调试。
 
 ---
-slug: multi-agent-collaboration
 
 一个 Agent 做所有事，就像一个人又当厨师又当服务员又当收银员，效率和 quality 都有限。多 Agent 就是分工协作，每个人专注自己的领域。但分工的前提是：任务复杂到值得分工。

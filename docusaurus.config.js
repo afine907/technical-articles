@@ -68,7 +68,7 @@ const config = {
           {
             type: 'docSidebar',
             sidebarId: 'aiSidebar',
-            label: '🤖 AI / LLM',
+            label: '文章集合',
             position: 'left',
           },
           {
@@ -86,7 +86,7 @@ const config = {
             items: [
               {
                 label: 'AI Native Pipeline 系列',
-                to: '/category/ai-native-pipeline-系列',
+                to: '/category/-ai-native-pipeline-系列',
               },
             ],
           },

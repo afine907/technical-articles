@@ -3,7 +3,6 @@ slug: prompt-design
 sidebar_position: 11
 title: Prompt 写得烂，Agent 就会瞎跑
 ---
-slug: prompt-design
 
 
 你的 Agent 一直在调用错误的工具，或给出的回答完全跑题。你以为是 Agent 的问题，其实是 Prompt 写得烂。
@@ -430,6 +429,5 @@ Agent 不知道该快还是该慢。
 ```
 
 ---
-slug: prompt-design
 
 **核心认知**：Prompt 是 Agent 的"大脑设定"，写好了事半功倍。花时间打磨 Prompt，是最划算的投入。
