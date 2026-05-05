@@ -1,0 +1,8 @@
+{
+  "label": "云原生部署",
+  "position": 14,
+  "link": {
+    "type": "generated-index",
+    "description": "Docker 容器化、K8s 部署、CI/CD 与监控告警"
+  }
+}

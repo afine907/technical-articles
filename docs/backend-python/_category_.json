@@ -1,0 +1,8 @@
+{
+  "label": "Python 后端实践",
+  "position": 13,
+  "link": {
+    "type": "generated-index",
+    "description": "FastAPI 服务、异步编程、数据库设计与代码质量"
+  }
+}
